@@ -23,73 +23,94 @@ class Boid {
 
     updateTrail() {
         this.trail.push({x: this.x, y: this.y});
-        if (this.trail.length > 75) {
+        if (this.trail.length > 50) {
             this.trail.shift();
         }
     }
 
-    getAcceleration(boids) {
-        let vx = 0;
-        let vy = 0;
+    drawBoid() {
+        const c = 1;
+        const d = Math.hypot(this.vx, this.vy) / 2;
+        const p1 = {x: this.x +  this.vx * c, y: this.y +  this.vy * c};
+        const p2 = {x: this.x +  this.vy / d, y: this.y + -this.vx / d};
+        const p3 = {x: this.x + -this.vy / d, y: this.y +  this.vx / d};
+        triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+    }
 
+    setAcceleration(boids) {
         let inRange = this.getInRange(boids);
-        if (inRange.length === 0) return {x: vx, y: vy};
+        this.cohesion(inRange);
+        this.avoidance(inRange);
+        this.alignment(inRange);
+        this.maxSpeed();
+        this.walls();
+    }
 
-        let cohesion = this.cohesion(inRange);
-        let alignment = this.alignment(inRange);
-        let avoidance = this.avoidance(inRange);
+    walls() {
+        const padding = 50;
+        const c = 1;
 
-        vx += cohesion.x;
-        vy += cohesion.y;
+        if (this.x < padding) {
+            this.vx += c;
+        }
+        if (this.x > width - padding) {
+            this.vx -= c;
+        }
+        if (this.y < padding) {
+            this.vy += c;
+        }
+        if (this.y > height - padding) {
+            this.vy -= c;
+        }
+    }
 
-        vx += alignment.x;
-        vy += alignment.y;
-
-        vx += avoidance.x;
-        vy += avoidance.y;
-
-        const mag = Math.hypot(vx, vy);
-        const vLimit = 5;
+    maxSpeed() {
+        const mag = Math.hypot(this.vx, this.vy);
+        const vLimit = speedSlider.value();
         if (mag > vLimit) {
-            vx = (vx / mag) * vLimit;
-            vy = (vy / mag) * vLimit;
+            this.vx = (this.vx / mag) * vLimit;
+            this.vy = (this.vy / mag) * vLimit;
         }
-
-        if (this.x < 10) {
-            vx += 0.5;
-        }
-        if (this.x > 790) {
-            vx -= 0.5;
-        }
-        if (this.y < 10) {
-            vy += 0.5;
-        }
-        if (this.y > 790) {
-            vy -= 0.5;
-        }
-
-
-
-        return {x: vx, y: vy};
     }
 
     cohesion(boids) {
+        const c = cohesionSlider.value();
+        if (boids.length === 0) return;
         let centerX = boids.reduce((acc, cur) => acc + cur.x, 0) / boids.length;
         let centerY = boids.reduce((acc, cur) => acc + cur.y, 0) / boids.length;
-        return {x: (centerX - this.x) / 1000, y: (centerY - this.y) / 1000};
+        this.vx += (centerX - this.x) * c;
+        this.vy += (centerY - this.y) * c;
     }
 
     alignment(boids) {
+        const c = alignmentSlider.value();
+        if (boids.length === 0) return;
         let centerX = boids.reduce((acc, cur) => acc + cur.vx, 0) / boids.length;
         let centerY = boids.reduce((acc, cur) => acc + cur.vy, 0) / boids.length;
-        return {x: (centerX - this.vx) / 8, y: (centerY - this.vy) / 8};
+        this.vx += (centerX - this.vx) * c;
+        this.vy += (centerY - this.vy) * c;
     }
 
     avoidance(boids) {
-        let centerX = boids.reduce((acc, cur) => acc + (-(cur.x - this.x)), 0);
-        let centerY = boids.reduce((acc, cur) => acc + (-(cur.y - this.y)), 0);
+        const dist = 20;
+        const c = avoidanceSlider.value();
 
-        return {x: centerX / 5000, y: centerY / 5000};
+        let centerX = 0;
+        let centerY = 0;
+
+        for (const boid of boids) {
+            if (Boid.distance(this, boid) < dist) {
+                centerX += this.x - boid.x;
+                centerY += this.y - boid.y;
+            }
+        }
+
+        this.vx += centerX * c;
+        this.vy += centerY * c;
+    }
+
+    static distance(b1, b2) {
+        return Math.hypot(b1.x - b2.x, b1.y - b2.y);
     }
 
     getInRange(boids) {
