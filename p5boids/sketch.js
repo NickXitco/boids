@@ -8,6 +8,8 @@ const numBoids = 150;
 
 let cohesionSlider, avoidanceSlider, alignmentSlider, speedSlider, wallsSlider;
 
+let quads = [];
+
 function setup() {
     createCanvas(width, height);
     resetButton = createButton('Reset');
@@ -42,10 +44,10 @@ function resetBoids() {
 function draw() {
     background(250);
 
+
     noFill();
 
     for (const boid of boids) {
-
         noFill();
         stroke(150);
         strokeWeight(0.25);
@@ -54,7 +56,9 @@ function draw() {
             vertex(point.x, point.y);
         }
         endShape();
+    }
 
+    for (const boid of boids) {
         boid.setAcceleration(boids);
 
         fill(20);
@@ -63,5 +67,33 @@ function draw() {
 
 
         boid.update();
+    }
+    let maxDim = Math.max(window.innerHeight, window.innerWidth);
+
+    let root = new QuadTree(maxDim,  window.innerWidth / 2, window.innerHeight / 2);
+    for (const boid of boids) {
+        root.insert(boid);
+    }
+
+    let rects = root.draw();
+    if (quads.length > 9) {
+        quads.shift();
+    }
+    quads.push(rects);
+
+    let quadsDrawn = new Set();
+    noFill();
+    strokeWeight(1);
+    for (let i = quads.length - 1; i >= 0; i--) {
+        const opacity = i / 10.0;
+        stroke(220, opacity * 255);
+        for (const q of quads[i]) {
+            if (quadsDrawn.has(q)) {
+                continue;
+            }
+            quadsDrawn.add(q);
+
+            rect(q.x, q.y, q.r * 2, q.r * 2);
+        }
     }
 }

@@ -5,36 +5,42 @@ class Boid {
     vx;
     vy;
 
+    drawing;
     trail;
+    trailDrawing;
 
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.vx = (Math.random() - 0.5) * 2;
-        this.vy = (Math.random() - 0.5) * 2;
+        this.vx = (Math.random() - 0.5) * 5;
+        this.vy = (Math.random() - 0.5) * 5;
         this.trail = [];
     }
 
     update() {
         this.x += this.vx;
         this.y += this.vy;
-        this.updateTrail();
+        //this.updateTrail();
     }
 
-    updateTrail() {
-        this.trail.push({x: this.x, y: this.y});
-        if (this.trail.length > 50) {
-            this.trail.shift();
-        }
-    }
+    // updateTrail() {
+    //     this.trail.push(new Two.Anchor(this.x, this.y, this.x, this.y, this.x, this.y));
+    //     if (this.trail.length > 15) {
+    //         this.trail.shift();
+    //     }
+    // }
 
-    drawBoid() {
-        const c = 1;
-        const d = Math.hypot(this.vx, this.vy) / 2;
-        const p1 = {x: this.x +  this.vx * c, y: this.y +  this.vy * c};
-        const p2 = {x: this.x +  this.vy / d, y: this.y + -this.vx / d};
-        const p3 = {x: this.x + -this.vy / d, y: this.y +  this.vx / d};
-        triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+    getHeadPoints() {
+        const v = new Two.Vector(this.vx, this.vy);
+        v.normalize();
+        v.multiplySelf(10);
+        const sharpness = 4;
+        const p0 = new Two.Vector(sharpness, sharpness);
+        const p1 = new Two.Vector(0, 0);
+        const p2 = new Two.Vector(-sharpness, sharpness);
+        const p3 = new Two.Vector(0, -10);
+
+        return [p0, p1, p2, p3];
     }
 
     setAcceleration(boids) {
@@ -53,20 +59,20 @@ class Boid {
         if (this.x < padding) {
             this.vx += c;
         }
-        if (this.x > width - padding) {
+        if (this.x > innerWidth - padding) {
             this.vx -= c;
         }
         if (this.y < padding) {
             this.vy += c;
         }
-        if (this.y > height - padding) {
+        if (this.y > innerHeight - padding) {
             this.vy -= c;
         }
     }
 
     maxSpeed() {
         const mag = Math.hypot(this.vx, this.vy);
-        const vLimit = speedSlider.value();
+        const vLimit = speed;
         if (mag > vLimit) {
             this.vx = (this.vx / mag) * vLimit;
             this.vy = (this.vy / mag) * vLimit;
@@ -74,7 +80,7 @@ class Boid {
     }
 
     cohesion(boids) {
-        const c = cohesionSlider.value();
+        const c = cohesion;
         if (boids.length === 0) return;
         let centerX = boids.reduce((acc, cur) => acc + cur.x, 0) / boids.length;
         let centerY = boids.reduce((acc, cur) => acc + cur.y, 0) / boids.length;
@@ -83,7 +89,7 @@ class Boid {
     }
 
     alignment(boids) {
-        const c = alignmentSlider.value();
+        const c = alignment;
         if (boids.length === 0) return;
         let centerX = boids.reduce((acc, cur) => acc + cur.vx, 0) / boids.length;
         let centerY = boids.reduce((acc, cur) => acc + cur.vy, 0) / boids.length;
@@ -93,7 +99,7 @@ class Boid {
 
     avoidance(boids) {
         const dist = 20;
-        const c = avoidanceSlider.value();
+        const c = avoidance;
 
         let centerX = 0;
         let centerY = 0;

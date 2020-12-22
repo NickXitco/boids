@@ -20,12 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="364a4ec7-ee4d-4090-9bcf-7fd4dac9f37a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boids.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2boids/boids.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p5boids/Boid.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p5boids/QuadTree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p5boids/Vertex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p5boids/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p5boids/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/boids.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boids.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boid.js" beforeDir="false" afterPath="$PROJECT_DIR$/Boid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sketch.js" beforeDir="false" afterPath="$PROJECT_DIR$/sketch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boid.js" beforeDir="false" afterPath="$PROJECT_DIR$/2boids/Boid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/p5boids/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boids.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2boids/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sketch.js" beforeDir="false" afterPath="$PROJECT_DIR$/p5boids/sketch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/2boids/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,14 +45,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1kDqxYsc46zLk3KURp8PiiTjsqW" />
   <component name="ProjectViewState">
@@ -55,7 +71,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../2020-fall-group-valgrinders/vacationplanner" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chesscontrol" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -63,12 +79,28 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nxitc\Desktop\boids\2boids" />
+      <recent name="C:\Users\nxitc\Desktop\boids\boids_webgl" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nxitc\Desktop\boids\p5boids" />
       <recent name="C:\Users\nxitc\Desktop\boids" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="boids.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/2boids/boids.js" working-dir="$PROJECT_DIR$/2boids">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.boids.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -81,6 +113,15 @@
       <workItem from="1605245757935" duration="4854000" />
       <workItem from="1605306703319" duration="9552000" />
       <workItem from="1605577541435" duration="19000" />
+      <workItem from="1608057666503" duration="6492000" />
+      <workItem from="1608131921452" duration="4000" />
+      <workItem from="1608145245755" duration="24260000" />
+      <workItem from="1608349380292" duration="2160000" />
+      <workItem from="1608400370740" duration="21509000" />
+      <workItem from="1608438762040" duration="392000" />
+      <workItem from="1608526050841" duration="4000" />
+      <workItem from="1608526300473" duration="5000" />
+      <workItem from="1608588278808" duration="6000" />
     </task>
     <servers />
   </component>
@@ -100,13 +141,41 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1591" y="723" key="FileChooserDialogImpl" timestamp="1605577558955">
+    <state x="1650" y="483" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1608416138334">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1591" y="723" key="FileChooserDialogImpl/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1605577558955" />
-    <state x="1421" y="348" key="SettingsEditor" timestamp="1605246647540">
+    <state x="1650" y="483" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1608416138334" />
+    <state x="1591" y="723" key="FileChooserDialogImpl" timestamp="1608438182290">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1421" y="348" key="SettingsEditor/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1605246647540" />
+    <state x="1591" y="723" key="FileChooserDialogImpl/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1608438182290" />
+    <state width="1256" height="400" key="GridCell.Tab.0.bottom" timestamp="1608171978108">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1256" height="400" key="GridCell.Tab.0.bottom/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1608171978108" />
+    <state width="1256" height="400" key="GridCell.Tab.0.center" timestamp="1608171978108">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1256" height="400" key="GridCell.Tab.0.center/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1608171978108" />
+    <state width="1256" height="400" key="GridCell.Tab.0.left" timestamp="1608171978108">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1256" height="400" key="GridCell.Tab.0.left/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1608171978108" />
+    <state width="1256" height="400" key="GridCell.Tab.0.right" timestamp="1608171978108">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1256" height="400" key="GridCell.Tab.0.right/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1608171978108" />
+    <state x="310" y="396" key="SettingsEditor" timestamp="1608416179029">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="310" y="396" key="SettingsEditor/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1608416179029" />
+    <state x="936" y="330" key="run.anything.popup" timestamp="1608406892874">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" key="run.anything.popup/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1608406892874" />
+    <state x="303" y="320" width="672" height="678" key="search.everywhere.popup" timestamp="1608167786039">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="303" y="320" width="672" height="678" key="search.everywhere.popup/0.-1440.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1608167786039" />
   </component>
 </project>
